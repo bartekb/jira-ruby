@@ -11,14 +11,14 @@ module JIRA
     def request(*args)
       response = make_request(*args)
       # raise HTTPError, response unless response.is_a?(Net::HTTPSuccess)
-      raise HttpError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
+      raise HTTPError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
       response
     end
 
     def request_multipart(*args)
       response = make_multipart_request(*args)
       # raise HTTPError, response unless response.is_a?(Net::HTTPSuccess)
-      raise HttpError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
+      raise HTTPError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
       response
     end
 
