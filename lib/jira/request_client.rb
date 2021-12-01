@@ -14,6 +14,7 @@ module JIRA
       unless response.is_a?(Net::HTTPSuccess)
         puts "*************************************************************************************************"
         puts "HTTP ERROR: code = #{response.code}, res = #{response.message}"
+        puts "HTTP ERROR: inspect = #{response.inspect}"
         puts "*************************************************************************************************"
         raise HTTPError, response
       end
@@ -28,6 +29,7 @@ module JIRA
       unless response.is_a?(Net::HTTPSuccess)
         puts "*************************************************************************************************"
         puts "HTTP ERROR: code = #{response.code}, res = #{response.message}"
+        puts "HTTP ERROR: inspect = #{response.inspect}"
         puts "*************************************************************************************************"
         raise HTTPError, response
       end
