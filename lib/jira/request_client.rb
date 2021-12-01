@@ -10,15 +10,29 @@ module JIRA
 
     def request(*args)
       response = make_request(*args)
-      # raise HTTPError, response unless response.is_a?(Net::HTTPSuccess)
-      raise HTTPError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
+      
+      unless response.is_a?(Net::HTTPSuccess)
+        puts "*************************************************************************************************"
+        puts "HTTP ERROR: code = #{response.code}, res = #{response.message}"
+        puts "*************************************************************************************************"
+        raise HTTPError, response
+      end
+      
+      # raise HTTPError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
       response
     end
 
     def request_multipart(*args)
       response = make_multipart_request(*args)
-      # raise HTTPError, response unless response.is_a?(Net::HTTPSuccess)
-      raise HTTPError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
+      
+      unless response.is_a?(Net::HTTPSuccess)
+        puts "*************************************************************************************************"
+        puts "HTTP ERROR: code = #{response.code}, res = #{response.message}"
+        puts "*************************************************************************************************"
+        raise HTTPError, response
+      end
+      # raise HTTPError.new(response.code, response.message), response unless response.is_a?(Net::HTTPSuccess)
+      
       response
     end
 
